@@ -17,7 +17,16 @@ use mihaildev\ckeditor\CKEditor;
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'type')->textInput() ?>
+   
+
+    <?php 
+
+    $arr=[
+        1=>'Статья',
+        2=>'Новость',
+        3=>'Страница'
+    ];
+    echo $form->field($model, 'type')->dropDownList($arr); ?>
 
     <?= $form->field($model, 'content')->widget(CKEditor::className(),[
         'editorOptions' => [
@@ -26,13 +35,20 @@ use mihaildev\ckeditor\CKEditor;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?php /* echo $form->field($model, 'created_at')->textInput()*/ ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?php /* echo $form->field($model, 'updated_at')->textInput()*/ ?>
 
-    <?= $form->field($model, 'active')->textInput() ?>
 
-    <?= $form->field($model, 'image')->fileInput() ?>
+
+    <?= $form->field($model, 'active')->checkbox(['label'=>'Показывать']) ?>
+
+
+    <?php if ($model->image): ?>
+    <img src="/uploads/<?= $model->image; ?>" alt="" style="width: 400px;">
+    <p><?= $model->image; ?></p>
+    <?php endif; ?>
+    <?= $form->field($model, 'image')->fileInput(['name' => $model->image->name]); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

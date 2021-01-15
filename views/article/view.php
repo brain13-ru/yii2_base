@@ -12,7 +12,7 @@ $this->title = $article->title;
         <h1><?= $article->title ?></h1>
         
         <p>
-            <img src="<?= $article->image ?>" style="width:400px;">
+            <img src="/uploads/<?= $article->image ?>" style="max-width:600px; max-height:600px;">
         </p>
         <p>
             <?= html_entity_decode($article->content) ?>

@@ -16,6 +16,9 @@ $this->title = 'Статьи';
             <div>
                 <h3><?= $article->title ?></h3>
                 <p>
+                <img src="/uploads/<?= $article->image ?>" style="max-width:400px; max-height:400px;"/>
+                </p>
+                <p>
                 <?= $article->description ?>
                 </p>
                 <p><a href="/article/view/?id=<?= $article->id ?>" >Подробнее</a></p>
